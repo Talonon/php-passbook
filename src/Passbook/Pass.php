@@ -845,7 +845,7 @@ class Pass implements PassInterface
      */
     public function setSharingProhibited($sharingProhibited)
     {
-      $this->SharingProhibited = !empty($sharingProhibited);
+      $this->sharingProhibited = !empty($sharingProhibited);
 
       return $this;
     }
