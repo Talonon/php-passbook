@@ -246,6 +246,13 @@ class Pass implements PassInterface
      */
     protected $appLaunchURL;
 
+  /**
+   * Disables the Share Pass option on newer iOS devices.
+   *
+   * @var bool
+   */
+    protected $sharingProhibited;
+
     public function __construct($serialNumber, $description)
     {
         // Required
@@ -287,6 +294,7 @@ class Pass implements PassInterface
             'voided',
             'appLaunchURL',
             'associatedStoreIdentifiers',
+            'sharingProhibited',
         );
         foreach ($properties as $property) {
             $method = 'is' . ucfirst($property);
@@ -830,5 +838,23 @@ class Pass implements PassInterface
     public function getAppLaunchURL()
     {
         return $this->appLaunchURL;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSharingProhibited($sharingProhibited)
+    {
+      $this->SharingProhibited = !empty($sharingProhibited);
+
+      return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSharingProhibited()
+    {
+      return $this->sharingProhibited;
     }
 }
